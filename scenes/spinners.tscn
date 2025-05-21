@@ -1,0 +1,194 @@
+[gd_scene load_steps=20 format=3 uid="uid://enlm4vxgiu2e"]
+
+[ext_resource type="Script" uid="uid://dyh0i23em2o0k" path="res://scripts/wipe.gd" id="1_afrcr"]
+[ext_resource type="Script" path="res://scripts/spin.gd" id="2_7th6q"]
+[ext_resource type="Script" uid="uid://b1ato1uh24r8r" path="res://scripts/spinner.gd" id="4_6s8mj"]
+[ext_resource type="Script" uid="uid://d3kk5qxrqjnle" path="res://scripts/arrange.gd" id="4_e1qjy"]
+[ext_resource type="Texture2D" uid="uid://c3j7nw6x6fpc3" path="res://assets/raw/monster01.png" id="5_aia1a"]
+[ext_resource type="Texture2D" uid="uid://bg7xjvncp306c" path="res://assets/raw/monster02.png" id="6_h5572"]
+[ext_resource type="Texture2D" uid="uid://dwqs2fysnh2qj" path="res://assets/raw/monster03.png" id="7_6s8mj"]
+[ext_resource type="Texture2D" uid="uid://lmevku3w71rm" path="res://assets/raw/monster04.png" id="8_8ka6s"]
+[ext_resource type="Texture2D" uid="uid://fu2wf4kdw4of" path="res://assets/raw/monster05.png" id="9_axrqm"]
+[ext_resource type="Texture2D" uid="uid://bolfueag5fvop" path="res://assets/raw/monster06.png" id="10_kb3we"]
+[ext_resource type="Texture2D" uid="uid://b056sgwnf1ve8" path="res://assets/raw/monster07.png" id="11_8vd1v"]
+[ext_resource type="Texture2D" uid="uid://clnc70y5a7bnl" path="res://assets/raw/monster08.png" id="12_tisln"]
+[ext_resource type="Texture2D" uid="uid://cd3urnuxsxlr2" path="res://assets/raw/monster09.png" id="13_dkw15"]
+[ext_resource type="Texture2D" uid="uid://bxeaa1ctwl255" path="res://assets/raw/monster10.png" id="14_ubfe2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_afrcr"]
+font_size = 20
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_2nmfr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2nmfr"]
+albedo_color = Color(0.201945, 0.0997387, 0.100763, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_2nmfr"]
+material = SubResource("StandardMaterial3D_2nmfr")
+size = Vector2(3, 3)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_7th6q"]
+height = 1.0
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("text", "background", "leftwiper", "rightwiper")]
+script = ExtResource("1_afrcr")
+text = NodePath("Label")
+background = NodePath("background")
+leftwiper = NodePath("left")
+rightwiper = NodePath("right")
+
+[node name="background" type="ColorRect" parent="CanvasLayer"]
+offset_right = 1150.0
+offset_bottom = 650.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_right = 1150.0
+offset_bottom = 650.0
+text = "MONSTER
+MATCH"
+label_settings = SubResource("LabelSettings_afrcr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="left" type="ColorRect" parent="CanvasLayer"]
+offset_left = -1100.0
+offset_right = -339.0
+offset_bottom = 1078.0
+rotation = -0.312066
+color = Color(0.0197966, 0, 0.731244, 1)
+
+[node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer/left"]
+position = Vector2(358.448, 374.122)
+rotation = 0.0319539
+scale = Vector2(0.636318, 0.636318)
+texture = ExtResource("5_aia1a")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/left"]
+position = Vector2(475.995, 527.626)
+rotation = 0.636939
+scale = Vector2(0.596085, 0.596085)
+texture = ExtResource("8_8ka6s")
+
+[node name="Sprite2D3" type="Sprite2D" parent="CanvasLayer/left"]
+position = Vector2(305.976, 572.598)
+rotation = 0.146144
+scale = Vector2(0.615727, 0.615727)
+texture = ExtResource("9_axrqm")
+
+[node name="right" type="ColorRect" parent="CanvasLayer"]
+offset_left = 1200.0
+offset_right = 1961.0
+offset_bottom = 1078.0
+rotation = -0.314108
+color = Color(0.608133, 0.140109, 0.224454, 1)
+
+[node name="Sprite2D3" type="Sprite2D" parent="CanvasLayer/right"]
+position = Vector2(416.635, 474.966)
+rotation = -0.0468184
+scale = Vector2(0.636, 0.636)
+texture = ExtResource("11_8vd1v")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/right"]
+position = Vector2(267.258, 336.015)
+rotation = 0.506234
+scale = Vector2(0.636, 0.636)
+texture = ExtResource("6_h5572")
+
+[node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer/right"]
+position = Vector2(224.534, 538.733)
+rotation = 0.606527
+scale = Vector2(0.636, 0.636)
+texture = ExtResource("14_ubfe2")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("WorldBoundaryShape3D_2nmfr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
+mesh = SubResource("PlaneMesh_2nmfr")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.965926, -0.150459, 0.210593, 0, 0.813669, 0.581328, -0.258819, -0.56152, 0.785944, 0.45743, 1.01838, 1.24356)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.944359, -1.43774e-08, 0.328916, -0.328916, -4.12792e-08, 0.944359, 0, -1, -4.37114e-08, 2.82426, 6.34476, -0.0568757)
+
+[node name="Node3D" type="Node3D" parent="." node_paths=PackedStringArray("spinners")]
+script = ExtResource("4_6s8mj")
+spinners = [NodePath("spinner"), NodePath("spinner2")]
+
+[node name="spinner" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-4.37114e-08, -1, 0, 0.719461, -3.14486e-08, 0.694533, -0.694533, 3.0359e-08, 0.719461, -0.662965, 0, 0)
+mesh = SubResource("CylinderMesh_7th6q")
+skeleton = NodePath("../..")
+script = ExtResource("2_7th6q")
+delay = null
+
+[node name="positioner" type="Node3D" parent="Node3D/spinner"]
+script = ExtResource("4_e1qjy")
+
+[node name="sprite1" type="Sprite3D" parent="Node3D/spinner/positioner"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0.5)
+pixel_size = 0.002
+texture = ExtResource("5_aia1a")
+
+[node name="sprite2" type="Sprite3D" parent="Node3D/spinner/positioner"]
+transform = Transform3D(-1.35076e-08, 0.309017, 0.951057, -1, -4.37114e-08, 0, 4.1572e-08, -0.951057, 0.309017, 0.475528, 0, 0.154509)
+pixel_size = 0.002
+texture = ExtResource("6_h5572")
+
+[node name="sprite3" type="Sprite3D" parent="Node3D/spinner/positioner"]
+transform = Transform3D(3.53633e-08, -0.809017, 0.587785, -1, -4.37114e-08, 0, 2.56929e-08, -0.587785, -0.809017, 0.293893, 0, -0.404509)
+pixel_size = 0.002
+texture = ExtResource("7_6s8mj")
+
+[node name="sprite4" type="Sprite3D" parent="Node3D/spinner/positioner"]
+transform = Transform3D(-0.809017, 0, -0.587785, 0, 1, 0, 0.587785, 0, -0.809017, -0.294, 0, -90)
+pixel_size = 0.002
+texture = ExtResource("8_8ka6s")
+
+[node name="sprite5" type="Sprite3D" parent="Node3D/spinner/positioner"]
+transform = Transform3D(0.309017, 0, -0.951056, 0, 1, 0, 0.951056, 0, 0.309017, -0.476, 0, -90)
+pixel_size = 0.002
+texture = ExtResource("9_axrqm")
+
+[node name="spinner2" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-4.37114e-08, -1, 0, 0.76112, -3.32696e-08, 0.648612, -0.648612, 2.83517e-08, 0.76112, 0.462094, 0, 0)
+mesh = SubResource("CylinderMesh_7th6q")
+skeleton = NodePath("../..")
+script = ExtResource("2_7th6q")
+delay = 2
+
+[node name="positioner" type="Node3D" parent="Node3D/spinner2"]
+script = ExtResource("4_e1qjy")
+
+[node name="sprite1" type="Sprite3D" parent="Node3D/spinner2/positioner"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0.5)
+pixel_size = 0.002
+texture = ExtResource("10_kb3we")
+
+[node name="sprite2" type="Sprite3D" parent="Node3D/spinner2/positioner"]
+transform = Transform3D(-1.35076e-08, 0.309017, 0.951057, -1, -4.37114e-08, -8.88178e-16, 4.1572e-08, -0.951057, 0.309017, 0.475528, 0, 0.154509)
+pixel_size = 0.002
+texture = ExtResource("11_8vd1v")
+
+[node name="sprite3" type="Sprite3D" parent="Node3D/spinner2/positioner"]
+transform = Transform3D(3.53633e-08, -0.809017, 0.587785, -1, -4.37114e-08, 0, 2.56929e-08, -0.587785, -0.809017, 0.293893, 0, -0.404509)
+pixel_size = 0.002
+texture = ExtResource("12_tisln")
+
+[node name="sprite4" type="Sprite3D" parent="Node3D/spinner2/positioner"]
+transform = Transform3D(-0.809017, 0, -0.587785, 0, 1, 0, 0.587785, 0, -0.809017, -0.293893, 0, -0.404509)
+pixel_size = 0.002
+texture = ExtResource("13_dkw15")
+
+[node name="sprite5" type="Sprite3D" parent="Node3D/spinner2/positioner"]
+transform = Transform3D(0.309017, 0, -0.951056, 0, 1, 0, 0.951056, 0, 0.309017, -0.475528, 0, 0.154509)
+pixel_size = 0.002
+texture = ExtResource("14_ubfe2")
+
+[connection signal="begin_spinners" from="CanvasLayer" to="Node3D" method="_on_canvas_layer_begin_spinners"]
