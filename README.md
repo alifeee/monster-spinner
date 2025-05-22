@@ -4,6 +4,8 @@ spinner animation ! with [Godot](https://godotengine.org/)
 
 ![film of spinner](example.gif)
 
+monster examples from <https://boardgamegeek.com/boardgame/342492/a-game-about-wee-whimsical-creatures-and-trying-to>
+
 ## Image scripts
 
 resize images and pad with white background
